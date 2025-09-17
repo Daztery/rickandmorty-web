@@ -14,16 +14,25 @@ export default async function Page({ searchParams }: PageProps) {
   const data = await repo.getPage(page);
 
   return (
-    <main className="mx-auto max-w-5xl p-6 space-y-6">
-      <h1 className="text-3xl font-semibold">Rick & Morty Characters</h1>
+    <main className="mx-auto max-w-6xl p-6 space-y-6">
+      <header className="space-y-1">
+        <h1 className="text-3xl font-semibold tracking-tight">
+          Rick & Morty Characters
+        </h1>
+        <p className="text-sm text-slate-600">
+          Next.js + Bun + Tailwind + Pagination
+        </p>
+      </header>
 
-      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {data.items.map((c) => (
-          <CharacterCard key={c.id} character={c} />
-        ))}
-      </ul>
+      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <ul className="grid grid-cols-3 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+          {data.items.map((c) => (
+            <CharacterCard key={c.id} character={c} />
+          ))}
+        </ul>
+      </div>
 
-      <div className="mt-6">
+      <div className="flex justify-center">
         <Pagination page={data.page} totalPages={data.totalPages} />
       </div>
     </main>

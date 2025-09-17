@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Rick & Morty",
@@ -12,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className="min-h-dvh bg-white text-neutral-900">{children}</body>
+      <body className="min-h-dvh bg-slate-50 text-slate-900">{children}</body>
     </html>
   );
 }

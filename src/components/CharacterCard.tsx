@@ -1,4 +1,5 @@
 import type { CharacterDTO } from "@/types/dto/character.dto";
+import Image from "next/image";
 
 export interface CharacterCardProps {
   character: CharacterDTO;
@@ -6,20 +7,29 @@ export interface CharacterCardProps {
 
 export function CharacterCard({ character }: CharacterCardProps) {
   return (
-    <li className="rounded-lg border p-4 flex gap-4 items-center">
-      <img
-        src={character.image}
-        alt={character.name}
-        className="h-20 w-20 rounded-md object-cover"
-      />
-      <div>
-        <h3 className="font-medium">{character.name}</h3>
-        <p className="text-sm text-neutral-600">
+    <li className="group rounded-2xl border border-slate-200 bg-white shadow-sm ring-1 ring-transparent hover:shadow-md hover:ring-slate-200 transition">
+      {/* Media */}
+      <div className="relative aspect-[16/11] overflow-hidden rounded-t-2xl">
+        <Image
+          src={character.image}
+          alt={character.name}
+          width={300}
+          height={300}
+          className="rounded-lg object-cover"
+        />
+      </div>
+
+      {/* Content */}
+      <div className="p-4">
+        <div className="flex items-start justify-between gap-3">
+          <h3 className="font-semibold leading-snug text-slate-900">
+            {character.name}
+          </h3>
+        </div>
+
+        <p className="mt-1 text-sm text-slate-600">
           {character.species} • {character.gender}
         </p>
-        <span className="inline-block mt-1 text-xs rounded bg-neutral-100 px-2 py-0.5">
-          {character.status}
-        </span>
       </div>
     </li>
   );

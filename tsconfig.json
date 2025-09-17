@@ -14,7 +14,12 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": "src",
-    "paths": { "@/*": ["*"] },
+    "paths": {
+      "@/*": ["*"],
+      "@app/*": ["app/*"],
+      "@components/*": ["components/*"],
+      "@lib/*": ["lib/*"]
+    },
     "plugins": [
       {
         "name": "next"
